@@ -2,8 +2,8 @@ package pages.forms;
 
 import org.openqa.selenium.By;
 
-import static utilities.JavaScriptUtility.clickJS;
-import static utilities.JavaScriptUtility.scrollToElementJS;
+import static utils.JavaScriptUtility.clickJS;
+import static utils.JavaScriptUtility.scrollToElementJS;
 
 public class PracticeFormPage extends FormsPage {
 

@@ -4,8 +4,8 @@ import org.openqa.selenium.By;
 
 import java.util.List;
 
-import static utilities.DropDownUtility.*;
-import static utilities.JavaScriptUtility.scrollToElementJS;
+import static utils.DropDownUtility.*;
+import static utils.JavaScriptUtility.scrollToElementJS;
 
 public class SelectMenuPage extends WidgetsPage {
 

@@ -4,15 +4,16 @@ import pages.widgets.DatePickerMenuPage;
 import tests.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.JsonUtils;
 
 public class DateTest extends BaseTest {
 
     @Test
     public void testSelectingDate() {
-        String month = "December";
-        String monthNumber = "12";
-        String day = "31";
-        String year = "2034";
+        String month = JsonUtils.getPostData().getMonth();
+        String monthNumber = JsonUtils.getPostData().getMonthNumber();
+        String day = JsonUtils.getPostData().getDay();
+        String year = JsonUtils.getPostData().getYear();
         DatePickerMenuPage datePickerPage = homePage.goToWidgets().clickDatePicker();
         datePickerPage.clickSelectDate();
         datePickerPage.selectMonth(month);

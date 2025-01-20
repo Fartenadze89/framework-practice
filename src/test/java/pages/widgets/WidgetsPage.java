@@ -3,7 +3,7 @@ package pages.widgets;
 import pages.HomePage;
 import org.openqa.selenium.By;
 
-import static utilities.JavaScriptUtility.scrollToElementJS;
+import static utils.JavaScriptUtility.scrollToElementJS;
 
 public class WidgetsPage extends HomePage {
     private By selectMenuItem = By.xpath("  //li[@id='item-8']/span[text()='Select Menu']");

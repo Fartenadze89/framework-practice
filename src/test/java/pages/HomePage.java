@@ -6,7 +6,7 @@ import pages.base.BasePage;
 import pages.widgets.WidgetsPage;
 import org.openqa.selenium.By;
 
-import static utilities.JavaScriptUtility.scrollToElementJS;
+import static utils.JavaScriptUtility.scrollToElementJS;
 
 public class HomePage extends BasePage {
 

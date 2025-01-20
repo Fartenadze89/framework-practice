@@ -13,7 +13,7 @@ import pages.base.BasePage;
 import java.io.File;
 import java.io.IOException;
 
-import static utilities.Utility.setUtilityDriver;
+import static utils.Utility.setUtilityDriver;
 
 public class BaseTest {
 

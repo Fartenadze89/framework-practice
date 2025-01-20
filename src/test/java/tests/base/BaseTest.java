@@ -9,6 +9,7 @@ import org.openqa.selenium.io.FileHandler;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import pages.base.BasePage;
+import utils.JsonUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,7 +21,6 @@ public class BaseTest {
     private WebDriver driver;
     protected BasePage basePage;
     protected HomePage homePage;
-    private String DEMOQA_URL = "https://demoqa.com";
 
     @BeforeClass
     public void setUp() {
@@ -30,7 +30,7 @@ public class BaseTest {
 
     @BeforeMethod
     public void loadApplication() {
-        driver.get(DEMOQA_URL);
+        driver.get(JsonUtils.getEnvData().getBaseURL());
         basePage = new BasePage();
         basePage.setDriver(driver);
         setUtilityDriver();

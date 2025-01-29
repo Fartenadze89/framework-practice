@@ -1,37 +1,29 @@
 package pages;
 
+import org.openqa.selenium.By;
+import pages.base.BasePage;
+import pages.base.Element;
 import pages.elements.ElementsPage;
 import pages.forms.FormsPage;
-import pages.base.BasePage;
 import pages.widgets.WidgetsPage;
-import org.openqa.selenium.By;
-
-import static utils.JavaScriptUtility.scrollToElementJS;
 
 public class HomePage extends BasePage {
+	private final Element formsCard = new Element(By.xpath("//div[@id='app']//h5[text()='Forms']"), "Forms Card");
+	private final Element elementsCard = new Element(By.xpath("//div[@id='app']//h5[text()='Elements']"), "Elements Card");
+	private final Element widgetsCard = new Element(By.xpath("//div[@id='app']//h5[text()='Widgets']"), "Widgets Card");
 
-    private By formsCard = By.xpath("//div[@id='app']//h5[text()='Forms']");
-    private By elementsCard = By.xpath("//div[@id='app']//h5[text()='Elements']");
-    private By widgetsCard = By.xpath("//div[@id='app']//h5[text()='Widgets']");
-    private By AlertFrameWindowCard = By.xpath("//div[@id='app']//h5[text()='Alerts, Frame & Windows']");
+	public FormsPage goToForms() {
+		formsCard.click();
+		return new FormsPage();
+	}
 
-    public FormsPage goToForms() {
-        scrollToElementJS(formsCard);
-        click(formsCard);
-        return new FormsPage();
-    }
+	public ElementsPage goToElements() {
+		elementsCard.click();
+		return new ElementsPage();
+	}
 
-    public ElementsPage goToElements() {
-        scrollToElementJS(elementsCard);
-        click(elementsCard);
-        return new ElementsPage();
-    }
-
-    public WidgetsPage goToWidgets() {
-        scrollToElementJS(widgetsCard);
-        click(widgetsCard);
-        return new WidgetsPage();
-    }
-
+	public WidgetsPage goToWidgets() {
+		widgetsCard.click();
+		return new WidgetsPage();
+	}
 }
-

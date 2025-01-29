@@ -1,61 +1,57 @@
 package tests.base;
 
-import pages.HomePage;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.io.FileHandler;
-import org.testng.ITestResult;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import pages.HomePage;
 import pages.base.BasePage;
 import utils.JsonUtils;
+import utils.Utility;
 
-import java.io.File;
-import java.io.IOException;
-
-import static utils.Utility.setUtilityDriver;
 
 public class BaseTest {
 
-    private WebDriver driver;
-    protected BasePage basePage;
-    protected HomePage homePage;
+	private WebDriver driver;
+	protected BasePage basePage;
+	protected HomePage homePage;
 
-    @BeforeClass
-    public void setUp() {
-        driver = new FirefoxDriver();
-        driver.manage().window().maximize();
-    }
+	@BeforeClass
+	public void setUp() {
+		driver = new FirefoxDriver();
+		driver.manage().window().maximize();
+	}
 
-    @BeforeMethod
-    public void loadApplication() {
-        driver.get(JsonUtils.getEnvData().getBaseURL());
-        basePage = new BasePage();
-        basePage.setDriver(driver);
-        setUtilityDriver();
-        homePage = new HomePage();
-    }
+	@BeforeMethod
+	public void loadApplication() {
+		driver.get(JsonUtils.getEnvData().getBaseURL());
+		basePage = new BasePage();
+		basePage.setDriver(driver);
+		Utility.setDriver(BasePage.driver);
+		homePage = new HomePage();
+	}
 
-    @AfterMethod
-    public void takeFailedResultScreenshot(ITestResult testResult) {
-        if (ITestResult.FAILURE == testResult.getStatus()) {
-            TakesScreenshot screenshot = (TakesScreenshot) driver;
-            File source = screenshot.getScreenshotAs(OutputType.FILE);
-            File destination = new File(System.getProperty("user.dir") + "/resources/screenshots" +
-                    java.time.LocalDate.now() + testResult.getName() + ".png");
-            try {
-                FileHandler.copy(source
-                        , destination);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            System.out.println("Screenshot Located At " + destination);
-        }
-    }
+	//need to fix it
+//	@AfterMethod
+//	public void takeFailedResultScreenshot(ITestResult testResult) {
+//		if (ITestResult.FAILURE == testResult.getStatus()) {
+//			TakesScreenshot screenshot = (TakesScreenshot) driver;
+//			File source = screenshot.getScreenshotAs(OutputType.FILE);
+//			File destination = new File(System.getProperty("user.dir") + "/resources/screenshots" +
+//					java.time.LocalDate.now() + testResult.getName() + ".png");
+//			try {
+//				FileHandler.copy(source
+//						, destination);
+//			} catch (IOException e) {
+//				throw new RuntimeException(e);
+//			}
+//			System.out.println("Screenshot Located At " + destination);
+//		}
+//	}
 
-    @AfterClass
-    public void tearDown() {
-        driver.quit();
-    }
+	@AfterClass
+	public void tearDown() {
+		driver.quit();
+	}
 }

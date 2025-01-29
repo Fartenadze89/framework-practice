@@ -1,13 +1,10 @@
 package utils;
 
-import pages.base.BasePage;
+import lombok.Setter;
 import org.openqa.selenium.WebDriver;
 
 public class Utility {
+	@Setter
+	protected static WebDriver driver;
 
-    public static WebDriver driver;
-
-    public static void setUtilityDriver() {
-        driver = BasePage.driver;
-    }
 }
